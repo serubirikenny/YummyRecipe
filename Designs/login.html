@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Shopping List</title>
+	<link href="static/css/style.css" rel="stylesheet">
+</head>
+<body  class='pic'>
+    <div id='center'>
+        <div class="form-wrapper">
+
+        <form id="login" name="login" method="POST" action="">
+            <h2>Shopping List</h2>
+	
+	<p class=error><strong>Error:</strong>{{ error }}</p>
+	
+            <p>Fill in the form below to view your favorite recipes</p>
+            <p>Don't have an account? Sign up <a href="/signup">here</a></p>
+            <input type="text" name='email' placeholder="Email"/>
+            <input type="password" name='password' placeholder="Password"/>
+            <input id="btn" type="submit" value="Login"/>
+        </form>
+        </div>
+
+    </div>
+</body>
+</html>
