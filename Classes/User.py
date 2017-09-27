@@ -11,16 +11,15 @@ class User(object):
             return 'recipe already exists!'
         return self.recipes
 
-    def read_recipes(self, recipe_name, new_name):
+    def read_recipes(self, name):
         '''
-        creates recipe name
+        Returns items from specified list
         '''
-        if recipe_name in self.recipes.keys():
-           
-            self.recipes[new_name] = self.recipes.pop(recipe_name)
-        else:
-            return "recipe name does not exist here"
-        return self.recipes
+        items = []
+        if name in self.recipes.keys():
+            items = [item for item in self.recipes[name]]
+        return items
+
 
     def update_recipes(self, recipe_name, new_name):
         '''
