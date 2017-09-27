@@ -3,7 +3,7 @@ class User(object):
     def __init__(self):
         self.recipes = {}
 
-    def create_recipe(self, name, item):
+    def create_recipe(self, name, items):
         items = list(items)
         if name not in self.recipes.keys():
             self.recipes[name] = [item for item in items]
@@ -16,7 +16,7 @@ class User(object):
         creates recipe name
         '''
         if recipe_name in self.recipes.keys():
-            # new_name = ShoppingList.name
+           
             self.recipes[new_name] = self.recipes.pop(recipe_name)
         else:
             return "recipe name does not exist here"
@@ -27,7 +27,7 @@ class User(object):
         creates recipe name
         '''
         if recipe_name in self.recipes.keys():
-            # new_name = ShoppingList.name
+           
             self.recipes[new_name] = self.recipes.pop(recipe_name)
         else:
             return "recipe name does not exist here"
@@ -45,7 +45,7 @@ class User(object):
 
     def update_recipe_item(self, recipe_name, item_name, new_name):
         '''
-        creates shopping list name
+        creates recipe name
         '''
         if recipe_name in self.recipes.keys():
             for item in self.recipes[recipe_name]:
@@ -60,7 +60,7 @@ class User(object):
 
     def add_recipe_item(self, recipe_name, *items):
         '''
-        method adds shopping list items
+        method adds recipe items
         '''
         items = list(items)
         if recipe_name in self.recipes.keys():
@@ -73,7 +73,7 @@ class User(object):
 
     def delete_recipe_item(self, recipe_name, item):
         '''
-        method deletes item in a shopping list
+        method deletes item in a recipe
         '''
         if item in self.recipes[recipe_name]:
             self.recipes[recipe_name].remove(item)
@@ -83,7 +83,7 @@ class User(object):
 
     def edit_recipe_item(self, recipe_name, item_name, new_name):
         '''
-        creates shopping list name
+        creates recipe name
         '''
         if recipe_name in self.recipes.keys():
             for item in self.recipes[recipe_name]:
