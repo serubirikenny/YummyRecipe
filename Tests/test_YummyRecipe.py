@@ -1,5 +1,5 @@
 import unittest
-from User import User
+from Classes.User import User
 
 
 class RecipeTestCase(unittest.TestCase):
@@ -43,7 +43,7 @@ class RecipeTestCase(unittest.TestCase):
 
     def test_read_recipe_items(self):
         self.user.recipes = {'Peppers': ['black', 'red']}
-        self.assertEqual(self.user.read_list('shoes'), ['flats', 'highs'])
+        self.assertEqual(self.user.read_recipes('Peppers'), ['black', 'red'])
 
     def test_delete_recipe(self):
         self.user.recipes = {'Peppers': ['black', 'red'], 'Onions': ['diced', 'ground']}
