@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Recipe Category</title>
+	<link href="static/css/style.css" rel="stylesheet">
+</head>
+<body class="pic">
+    <div class="header-wrapper"><header id="navigation">
+        <div class="left"><h1>Recipe Categories</h1></div>
+            <div class="right">
+                <ul>
+                    <li><a href="#">Welcome</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+        </div>
+    </header>
+    </div>
+    <div id='center'>
+	<section id="content" >
+        <h2>Your Recipes</h2>
+				<ul class="list">
+				{% for item in lists.keys()%}
+					<li><a class="item" href="/item/{{ item }}">{{ item }}</a><a class="side" href="/updatelist/{{ item }}">edit</a><a class="side" href="/delete_recipes/{{ item }}">delete</a></li>
+				{% endfor %}
+			</ul>
+        <div class="add">
+               <p><a href="/add_list">Add Recipe Category</a></p>
+        </div>
+</section>
+    </div>
+<footer id="footer">
+		<div id="center">
+			<div class="text-center">
+				<p>Copyright &copy; 2017 - <a href="/add_list">Yummy Recipe</a> | All Rights Reserved</p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>
