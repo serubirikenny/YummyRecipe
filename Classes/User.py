@@ -1,3 +1,8 @@
+import sys
+
+
+sys.path.append('..')
+
 class User(object):
 
     def __init__(self):
@@ -53,11 +58,11 @@ class User(object):
                     self.recipes[recipe_name].append(new_name)
                 else:
                     return 'Item not in recipe'
-            else:
-                return "recipe doesn't exist"
+        else:
+            return "recipe doesn't exist %s" %str(self.recipes.keys())
         return self.recipes
 
-    def add_recipe_item(self, recipe_name, *items):
+    def add_recipe_item(self, recipe_name, items):
         '''
         method adds recipe items
         '''
@@ -92,5 +97,5 @@ class User(object):
                 else:
                     return 'Item not in recipe'
         else:
-            return "list name doesn't exist"
+            return "recipe doesn't exist"
         return self.recipes
