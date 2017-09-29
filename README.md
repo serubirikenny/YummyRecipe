@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/serubirikenny/YummyRecipe.svg?branch=master)](https://travis-ci.org/serubirikenny/YummyRecipe)
+[![Build Status](https://travis-ci.org/serubirikenny/YummyRecipe.svg?branch=classes%2Ftests)](https://travis-ci.org/serubirikenny/YummyRecipe)
 [![Coverage Status](https://coveralls.io/repos/github/serubirikenny/YummyRecipe/badge.svg)](https://coveralls.io/github/serubirikenny/YummyRecipe)
 [![Code Climate](https://codeclimate.com/github/serubirikenny/YummyRecipe/badges/gpa.svg)](https://codeclimate.com/github/serubirikenny/YummyRecipe)
 
