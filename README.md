@@ -17,7 +17,7 @@ The yummy recipe is an application that allows users to record and share their c
 ## Create a virtualenv, and activate it:
 
 $ python3 -m venv menv 
-$ source shop/bin/activate
+$ source menv/bin/activate
 
 ## To run the application
 Run python app.y
