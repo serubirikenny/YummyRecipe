@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/serubirikenny/YummyRecipe.svg?branch=master)](https://travis-ci.org/serubirikenny/YummyRecipe)
+[![Coverage Status](https://coveralls.io/repos/github/serubirikenny/YummyRecipe/badge.svg)](https://coveralls.io/github/serubirikenny/YummyRecipe)
 
 ## Yummy Recipe 
 
