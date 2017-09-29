@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Recipe</title>
-	<link href="static/css/style.css" rel="stylesheet">
+	<link href="/static/css/style.css" rel="stylesheet">
 </head>
 <body class="pic">
     <div class="header-wrapper"><header id="navigation">
@@ -21,7 +21,7 @@
 				<h2>Your {{recipe_name}} List Items</h2>
 				<ul class="list">
 				{% for item in items%}
-					<li><a class="item">{{ item }}</a><a class="side" href="/updatelistitem/{{recipe_name}}/{{ item }}">edit</a><a class="side" href="/delete/{{recipe_name}}/{{ item }}">delete</a></li>
+					<li><a class="item"> {{ item }}</a><a class="side" href="/updatelistitem/{{recipe_name}}/{{ item }}">edit</a><a class="side" href="/delete/{{recipe_name}}/{{ item }}">delete</a></li>
 				{% endfor %}
 			</ul>
            <div class="add">

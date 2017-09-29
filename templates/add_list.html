@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Recipe</title>
-	<link href="static/css/style.css" rel="stylesheet">
+	<link href="/static/css/style.css" rel="stylesheet">
 </head>
 <body class="pic">
     <div class="header-wrapper"><header id="navigation">
@@ -18,13 +18,13 @@
     </div>
     <div id='center'>
 	<section id="content-add" >
-        <h2>Add list</h2>
+        <h2>Add Recipe</h2>
 				<form id="add" name="login" method="POST" action="">
 					{% if error %}
 					<p class=error><strong>Error:</strong>{{ error }}</p>
 					{% endif %}
 						<p>Back to lists<a href="/index"> Click here</a></p>
-						<input type="text" name='list_name' placeholder="Recipe category name"/>
+						<input type="text" name='recipe_name' placeholder="Recipe category name"/>
 						<input type="text" name='items' placeholder="Recipe"/>
 						<input id="btn" type="submit" value="add"/>
 				</form>
