@@ -40,7 +40,7 @@ class RecipeTestCase(unittest.TestCase):
     def test_updating_non_existing_recipe_item(self):
         self.user.recipes = {'Peppers': ['black']}
         self.assertEqual(self.user.update_recipe_item('Peppers', 'blac', 'bla'),
-                         'recipe not in category', msg='recipe not in category')
+                         'Item not in recipe', msg='Item not in recipe')
 
     def test_read_recipe_items(self):
         self.user.recipes = {'Peppers': ['black', 'red']}
