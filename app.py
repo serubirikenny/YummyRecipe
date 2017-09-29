@@ -8,10 +8,21 @@ app.secret_key = 'elgordo123456789'
 users = {'admin': 'admin', 'art': 'art'}
 user = User()
 
+def login_required(test):
+    @wraps(test)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return test(*args, **kwargs)
+        else:
+            flash("You need to login first.")
+            return redirect(url_for('login'))
+    return wrap
+
 
 
 
 @app.route('/index')
+@login_required
 def index():
     lists = user.recipes
     return render_template('index.html', lists=lists)
@@ -33,12 +44,13 @@ def register():
 
 
 @app.route('/add_list', methods=['GET', 'POST'])
+@login_required
 def add_list():
     error = None
     if request.method == 'POST':
         recipe_name = request.form['recipe_name']
         items = request.form['items']
-        flash("You have succesfully added registered {} {}".format(recipe_name, items))
+        flash("You have succesfully added  {} {}".format(recipe_name, items))
 
         if recipe_name and items:
             user.create_recipe(recipe_name, items)
@@ -46,8 +58,9 @@ def add_list():
     return render_template('add_list.html', error=error)
 
 
-@app.route('/add_item', methods=['GET', 'POST'])
-def add_item():
+@app.route('/add_item/<recipe_name>', methods=['GET', 'POST'])
+@login_required
+def add_item(recipe_name):
     error = None
     if request.method == 'POST':
         recipe_name = request.form['recipe_name']
@@ -55,47 +68,9 @@ def add_item():
         flash("You have succesfully added registered {} {}".format(recipe_name, items))
 
         if recipe_name and items:
-            user.add_recipe_item(recipe_name, items)
+            user.add_recipe_item(recipe_name, [items])
             return redirect(url_for('item', recipe_name=recipe_name))
-    return render_template('add_list.html', error=error)
-
-
-def login_required(test):
-    @wraps(test)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return test(*args, **kwargs)
-        else:
-            flash("You need to login first.")
-            return redirect(url_for('log'))
-    return wrap
-
-@app.route('/editlist', methods=['GET', 'POST'])
-def editlist():
-    error = None
-    if request.method == 'POST':
-        p_name = request.form['previous_name']
-        n_name = request.form['new_name']
-
-
-        if p_name and n_name:
-            user.update_recipe(p_name, n_name)
-            return redirect(url_for('index'))
-    return render_template('editlist.html', error=error)
-
-@app.route('/editlistitem', methods=['GET', 'POST'])
-def editlistitem():
-    error = None
-    l_name = ''
-    if request.method == 'POST':
-        l_name = request.form['list_name']
-        o_name = request.form['item_name']
-        ni_name = request.form['new_item_name']
-
-    if l_name and o_name and ni_name:
-        user.edit_recipe_item(l_name, o_name, ni_name)
-    return redirect(url_for('index'))
-    return render_template('editlist_item.html', error=error)
+    return render_template('add_item.html',recipe_name= recipe_name, error=error)
 
 @app.route('/logout')
 def logout():
@@ -103,26 +78,72 @@ def logout():
     flash('You Were Logged Out !')
     return redirect(url_for('login'))
 
-
-@app.route('/item/<list_name>')
+@app.route('/item/<recipe_name>')
 @login_required
-def item(list_name):
-    items = user.read_recipes(list_name)
-    return render_template('item.html', items=items, list_name=list_name)
+def item(recipe_name):
+    items = user.read_recipes(recipe_name)
+    print(items)
+    return render_template('item.html', items=items, recipe_name=recipe_name)
 
+@app.route('/delete/<recipe_name>/<item_name>')
+@login_required
+def delete(recipe_name, item_name):
+    user.delete_recipe_item(recipe_name, item_name)
+    return redirect(url_for('item', recipe_name=recipe_name))
+    return render_template('item.html',recipe_name=recipe_name,items=items)
 
-@app.route('/delete/<list_name>/<item_name>')
-def delete(list_name, item_name):
-    user.delete_recipe_item(list_name, item_name)
-    return redirect(url_for('item', list_name=list_name))
-    return render_template('item.html')
-
-
-@app.route('/delete_list/<list_name>')
-def delete_list(list_name):
-    user.delete_recipes(list_name)
+@app.route('/delete_recipes/<recipe_name>')
+@login_required
+def delete_recipes(recipe_name):
+    """"
+    Route enables user to delete shopping list
+    """
+    user.delete_recipes(recipe_name)
     return redirect(url_for('index'))
     return render_template('index.html')
+
+
+
+
+
+@app.route('/updatelist/<recipe_name>', methods=['GET', 'POST'])
+@login_required
+def updatelist(recipe_name):
+    """"
+    Route enables user to edit recipe category
+    """
+    error = None    
+    if request.method == 'POST':
+        recipe_name = request.form['recipe_name']
+        new_name = request.form['new_name']
+        flash("You have succesfully added registered {} {}".format(recipe_name, new_name))
+
+        if recipe_name and new_name:
+            user.update_recipes(recipe_name, new_name)
+            return redirect(url_for('index',recipe_name=recipe_name))
+    return render_template('updaterecipe.html',recipe_name=recipe_name)
+
+@app.route('/updatelistitem/<recipe_name>/<item_name>', methods=['GET', 'POST'])
+@login_required
+def updatelistitem(recipe_name, item_name):
+    """"
+    Route enables user to edit recipe category item
+    """
+    error = None
+    if request.method == 'POST':
+        recipe_name = request.form['recipe_name']
+        item_name = request.form['item_name']
+        new_name = request.form['new_item_name']
+        flash("You have succesfully added registered {} {} {}".format(recipe_name, item_name, new_name))
+
+        if recipe_name and item_name:
+            user.update_recipe_item(recipe_name, item_name, new_name)
+            return redirect(url_for('item', recipe_name=recipe_name, item_name=item_name))
+    return render_template('updaterecipeitem.html', recipe_name=recipe_name, item_name=item_name)
+
+
+
+
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
