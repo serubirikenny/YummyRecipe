@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/serubirikenny/YummyRecipe.svg?branch=master)](https://travis-ci.org/serubirikenny/YummyRecipe)
+
 ## Yummy Recipe 
 
 The yummy recipe is an application that allows users to record and share their cooking recipes and recipe categories, hence meeting the needs of keeping track of their favorite recipes.
