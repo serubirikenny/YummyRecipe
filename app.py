@@ -96,7 +96,7 @@ def delete(recipe_name, item_name):
 @login_required
 def delete_recipes(recipe_name):
     """"
-    Route enables user to delete shopping list
+    Route enables user to delete recipe category
     """
     user.delete_recipes(recipe_name)
     return redirect(url_for('index'))
