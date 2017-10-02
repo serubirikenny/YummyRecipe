@@ -49,7 +49,11 @@ def add_list():
     error = None
     if request.method == 'POST':
         recipe_name = request.form['recipe_name']
-        items = request.form['items']
+        item1 = request.form['item1']
+        item2 = request.form['item2']
+        item3 = request.form['item3']
+        items = [item1,item2,item3]
+
         flash("You have succesfully added  {} {}".format(recipe_name, items))
 
         if recipe_name and items:
