@@ -18,7 +18,7 @@
     </div>
     <div id='center'>
 	<section id="content-item">
-				<h2>Your {{recipe_name}} List Items</h2>
+				<h2>Your {{recipe_name}} recipe Items</h2>
 				<ul class="list">
 				{% for item in items%}
 					<li><a class="item"> {{ item }}</a><a class="side" href="/updatelistitem/{{recipe_name}}/{{ item }}">edit</a><a class="side" href="/delete/{{recipe_name}}/{{ item }}">delete</a></li>
