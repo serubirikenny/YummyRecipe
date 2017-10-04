@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Recipe Category</title>
+	<link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body class="pic">
+    <div class="header-wrapper"><header id="navigation">
+        <div class="left"><h1>Recipe</h1></div>
+            <div class="right">
+                <ul>
+                    <li><a href="#">Welcome</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+        </div>
+    </header>
+    </div>
+    <div id='center'>
+	<section id="content-add" >
+        <h2>Update list</h2>
+				<form id="add" name="login" method="POST" action="">
+					{% if error %}
+					<p class=error><strong>Error:</strong>{{ error }}</p>
+					{% endif %}
+						<p>Back to lists<a href="/index"> Click here</a></p>
+						<input type="text" name='recipe_name' placeholder="Recipe name" value="{{recipe_name}}" readonly="readonly"/>
+						<input type="text" name='new_name' placeholder="new_name"/>
+						<input id="btn" type="submit" value="update"/>
+				</form>
+</section>
+    </div>
+<footer id="footer">
+		<div id="center">
+			<div class="text-center">
+				<p>Copyright &copy; 2017 - <a href="#home">recipe name</a> | All Rights Reserved</p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

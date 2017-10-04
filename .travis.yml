@@ -1,0 +1,20 @@
+language: 
+- python
+
+cache:
+- pip
+
+python:
+- "3.5"
+
+install:
+- pip install coverage
+- pip install coveralls
+- pip install -r requirements.txt
+
+script:
+- nosetests Tests/test_YummyRecipe.py
+
+after_success:
+- coverage report
+- coveralls

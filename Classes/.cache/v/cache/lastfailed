@@ -1,0 +1,12 @@
+{
+  "test_YummyRecipe.py::RecipeTestCase::test_create_recipe_successfully": true, 
+  "test_YummyRecipe.py::RecipeTestCase::test_create_recipe_when_recipe_already_exists": true, 
+  "test_YummyRecipe.py::RecipeTestCase::test_delete_recipe": true, 
+  "test_YummyRecipe.py::RecipeTestCase::test_delete_recipe_item": true, 
+  "test_YummyRecipe.py::RecipeTestCase::test_read_recipe_items": true, 
+  "test_YummyRecipe.py::RecipeTestCase::test_recipe_initialy_empty": true, 
+  "test_YummyRecipe.py::RecipeTestCase::test_update_recipe_item": true, 
+  "test_YummyRecipe.py::RecipeTestCase::test_update_recipes": true, 
+  "test_YummyRecipe.py::RecipeTestCase::test_updating_non_existing_recipe": true, 
+  "test_YummyRecipe.py::RecipeTestCase::test_updating_non_existing_recipe_item": true
+}
