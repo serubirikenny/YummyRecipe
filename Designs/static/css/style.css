@@ -43,7 +43,7 @@ a {
   margin: 0 auto; }
 
 .header-wrapper {
-  background: #8492A6; }
+  color: #fff; }
 
 header {
   clear: both;
@@ -71,11 +71,7 @@ header .right ul {
 
 #content {
   clear: both;
-  background: url(../images/recipe.jpg) no-repeat right;
-  background-position: 512px 0px;
-  height: 522px;
-  padding: 20px 0;
-  box-shadow: 0px 0px 8px #cacaca; }
+  }
 
 #content-item {
   background: url(../images/list-item.png) no-repeat right;
@@ -194,12 +190,14 @@ header .right ul {
   color: red; }
 
 footer {
+position:absolute;
+width:100%;
+bottom:0;
   padding: 10px 0;
   background: #47525E; }
   footer .text-center p {
     text-align: center;
     color: #fff; }
     footer .text-center p a {
-      color: #fff; }
-
-/*# sourceMappingURL=style.css.map */
+      color: #fff;
+ }
