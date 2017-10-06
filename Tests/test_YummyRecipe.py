@@ -12,7 +12,7 @@ class RecipeTestCase(unittest.TestCase):
     def test_create_recipe_successfully(self):
         initial_recipe_count = len(self.user.recipes)
         self.user.create_recipe('Rolex','eggs')
-        
+
         new_recipe_count = len(self.user.recipes)
         self.assertEqual(new_recipe_count - initial_recipe_count, 1)
 

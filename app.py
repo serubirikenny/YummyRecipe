@@ -4,7 +4,7 @@ from Classes.User import User
 
 app = Flask(__name__)
 
-app.secret_key = 'elgordo123456789'
+app.secret_key = 'free23456789'
 users = {'admin': 'admin', 'art': 'art'}
 user = User()
 
@@ -81,7 +81,8 @@ def logout():
     session.pop('logged_in', None)
     flash('You Were Logged Out !')
     return redirect(url_for('login'))
-
+    for key in session.keys():
+     session.pop[email]
 @app.route('/item/<recipe_name>')
 @login_required
 def item(recipe_name):
@@ -116,7 +117,7 @@ def updatelist(recipe_name):
     """"
     Route enables user to edit recipe category
     """
-    error = None    
+    error = None
     if request.method == 'POST':
         recipe_name = request.form['recipe_name']
         new_name = request.form['new_name']
@@ -158,6 +159,7 @@ def login():
             error = 'Invalid Credentials'
         else:
             session['logged_in'] = True
+            session['email'] = request.form['email']
             return redirect(url_for('index'))
     return render_template('login.html', error=error)
 
